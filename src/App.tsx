@@ -33,7 +33,7 @@ interface MenuItem {
 }
 
 function App() {
-  const [pathname, setPathName] = useState("/");
+  const [pathname, setPathName] = useState();
   const items: MenuItem[] = [
     {
       label: "Dashboard",
@@ -112,7 +112,7 @@ function App() {
       menuDataRender={menuDataRender}
       location={{ pathname }} // Set the current active path
       menuItemRender={(item, dom) => (
-        <Link to={item.path ?? ""} onClick={() => setPathName(item.path ?? "")}>
+        <Link to={item.path ?? ""} onClick={() => item.path ?? setPathName(item.path)}>
           {dom}
         </Link>
       )}
